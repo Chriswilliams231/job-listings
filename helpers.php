@@ -52,6 +52,7 @@ function inspect($value){
     var_dump($value);
     echo '</pre>';
 }
+
 /**
  * Inspect a value(s) and die
  * 
