@@ -9,5 +9,7 @@ $params = [
 ];
 
 $listing = $db->query('SELECT * FROM listings WHERE id = :id', $params)->fetch();
-inspect($listing);
-loadView('listings/show');
+// inspect($listing);
+loadView('listings/show',[
+    'listing' => $listing
+]);
