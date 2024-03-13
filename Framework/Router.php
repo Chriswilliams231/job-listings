@@ -1,5 +1,7 @@
 <?php
 
+namespace Framework;
+
 class Router {
     // This will be an associative array to the routes given 
     protected $routes = [];

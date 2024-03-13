@@ -1,0 +1,16 @@
+{
+	"name": "chriswilliams231/job-listing",
+	"description": "Job listing Application",
+	"authors": [
+		{
+			"name": "Chris Williams",
+			"email": "dummyemail@gmail.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Framework\\": "Framework/",
+			"App\\": "App/"
+		}
+	}
+}
