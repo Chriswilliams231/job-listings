@@ -5,13 +5,22 @@ namespace Framework;
 class Router {
     // This will be an associative array to the routes given 
     protected $routes = [];
+    /**
+     * Add a new route
+     * @param string $method
+     * @param string $uri
+     * @param string $action
+     * @return void
+     */
+    public function registerRoute($method, $uri, $action){
+        list($controller, $controllerMethod) = explode('@', $action);
 
-    public function registerRoute($method, $uri, $controller){
         // Adds to the array
         $this->routes[] = [
             'method' => $method,
             'uri' => $uri,
-            'controller' => $controller
+            'controller' => $controller,
+            'controllerMethod' => $controllerMethod
         ];
     }
     /**
@@ -78,7 +87,13 @@ class Router {
     public function route($uri, $method){
         foreach($this->routes as $route){
             if($route['uri']== $uri && $route['method'] == $method){
-                require basePath('App/' . $route['controller']);
+                // Extracts the controller and controller method
+                $controller = 'App\\Controllers\\' . $route['controller'];
+                $controllerMethod = $route['controllerMethod'];
+
+                // Instatiate the controller and call method
+                $controllerInstance = new $controller();
+                $controllerInstance->$controllerMethod();
                 return;
             }
         }
