@@ -9,6 +9,7 @@ loadPartial('head');
          <p class="text-center text-2xl mb-4">
          <?= $message?>
          </p>
+         <a  class="block text-center" href="/listings">Back to listings</a>
       </div>
       </section>
     </body>
