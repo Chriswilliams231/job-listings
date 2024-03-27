@@ -1,6 +1,7 @@
 <?php
 
 namespace Framework;
+use App\Controllers\ErrorController;
 
 class Router {
     // This will be an associative array to the routes given 
@@ -64,18 +65,7 @@ class Router {
         $this->registerRoute('DELETE', $uri, $controller);
     }
 
-     /**
-     * Load error page
-     * 
-     * @param int $httpCode
-     * 
-     * @return void
-     */
-    public function error($httpCode = 404){
-        http_response_code($httpCode);
-        loadView("error/{$httpCode}");
-        exit;
-    }
+     
 
     /**
      * Route the request
@@ -97,7 +87,7 @@ class Router {
                 return;
             }
         }
-
-        $this->error();
+        ErrorController::notFound();
+        
     }
 }
